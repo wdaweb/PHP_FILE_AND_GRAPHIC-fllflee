@@ -22,10 +22,44 @@
 <!----建立上傳檔案表單及相關的檔案資訊存入資料表機制----->
 
 
-
+<form action="save_file.php" mothod="post" enctype="multipart/form-data">
+<input type="file" name="upload" id="img"><br>
+<input type="text" name="note" ><br>
+<input type="submit" value="上傳">
+</form>
 
 
 <!----透過資料表來顯示檔案的資訊，並可對檔案執行更新或刪除的工作----->
+<table>
+<tr></tr>
+    <td>預覽</td>
+    <td>檔名</td>
+    <td>路徑</td>
+    <td>類別</td>
+    <td>上傳時間</td>
+</tr></table>
+<?php
+$all=all('file_info');
+
+foreach($all as $row){
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+?>
+
+
 
 
 

@@ -1,26 +1,25 @@
 <?php
-$dsn="mysql:host=localhost:charset=8;dbname=files";
+$dsn="mysql:host=localhost:charset=utf8;dbname=files";
 $pdo=new pdo();
 date_default_timezone_set("Asia/Taipei");
 
-function all($table,$arg){
+
+function all($table,...$arg){
     global $pdo;
     $sql="select * from $table ";
 
-   if(is_arry($arg)){
-       
+   if(!empty($arg[0]) && if_array($arg[0])){
+       foreach($arg[0] as $key => $value){
+           $tmp[]=sprintf("`%s`='%s'",$key,$value);
+       }
    }
-    if(!empty($arg[0]) && is_arry[$[0]])){
-        foreach($arg[0] $key => $value){
-            $tmp[]=sprintf("`%`")
-        }
-        $sql=$sql ."where" .implode("&&" ,$tmp);
+   $sql=$sql . "where".implode("&&",$tmp);
+      }
+     if(!empty($arg[1])){
+         $sql=$sql . $arg[1];
     }
-
-    if(!empty($arg[1])){
-
-    }
-    return$pdo0->($sql)->fetchAll();
+    return $pdo ->query($sql)->fetchAll();
+}
 
 function find($table,$arg){
     global $pdo;
